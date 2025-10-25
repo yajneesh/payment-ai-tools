@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Industry AI Tools Directory</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            padding: 2rem;
+            background: #f8f9fa;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .stat-card h3 {
+            font-size: 2rem;
+            color: #667eea;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-card p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .filters {
+            padding: 2rem;
+            background: white;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        .filter-group {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .filter-group label {
+            font-weight: 600;
+            color: #333;
+        }
+
+        select, input {
+            padding: 0.7rem 1rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            transition: all 0.3s;
+        }
+
+        select:focus, input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        input {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .tools-grid {
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .tool-card {
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .tool-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.2);
+            border-color: #667eea;
+        }
+
+        .tool-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 1rem;
+        }
+
+        .tool-name {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #1e3c72;
+        }
+
+        .relevance-badge {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .category-tag {
+            display: inline-block;
+            background: #f0f0f0;
+            color: #555;
+            padding: 0.4rem 0.8rem;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+        }
+
+        .tool-description {
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .tool-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .visit-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 0.6rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .visit-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .impact-indicator {
+            display: flex;
+            gap: 3px;
+        }
+
+        .impact-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #e0e0e0;
+        }
+
+        .impact-dot.active {
+            background: #667eea;
+        }
+
+        .footer {
+            background: #1e3c72;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .tools-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Payment Industry AI Tools Directory</h1>
+            <p>Comprehensive AI Solutions for Modern Payment Processing</p>
+        </div>
+
+        <div class="stats">
+            <div class="stat-card">
+                <h3 id="totalTools">0</h3>
+                <p>AI Tools</p>
+            </div>
+            <div class="stat-card">
+                <h3 id="categories">0</h3>
+                <p>Categories</p>
+            </div>
+            <div class="stat-card">
+                <h3 id="avgRelevance">0%</h3>
+                <p>Avg Relevance</p>
+            </div>
+        </div>
+
+        <div class="filters">
+            <div class="filter-group">
+                <label>Category:</label>
+                <select id="categoryFilter">
+                    <option value="all">All Categories</option>
+                </select>
+                <label>Search:</label>
+                <input type="text" id="searchInput" placeholder="Search tools...">
+            </div>
+        </div>
+
+        <div class="tools-grid" id="toolsGrid"></div>
+
+        <div class="footer">
+            <p>© 2025 Payment Industry AI Tools Directory | Powered by AI Innovation</p>
+        </div>
+    </div>
+
+    <script>
+        const tools = [
+            {
+                name: "Feedzai",
+                category: "Fraud Detection",
+                description: "AI-native fraud and financial crime prevention platform with real-time fraud detection. Reduces fraudulent transactions by 45% with machine learning models that adapt to new threats.",
+                url: "https://www.feedzai.com",
+                relevance: 95
+            },
+            {
+                name: "Stripe Radar",
+                category: "Fraud Detection",
+                description: "Advanced machine learning fraud detection processing $1.4 trillion annually. Scans every payment using hundreds of signals, reducing fraud by 38% on average with automatic risk scoring.",
+                url: "https://stripe.com/radar",
+                relevance: 95
+            },
+            {
+                name: "Sardine",
+                category: "Fraud Detection",
+                description: "Developing AI agents to augment risk teams for KYC, payment screening, merchant risk, and dispute management. Secured $70M Series C funding in 2025.",
+                url: "https://sardine.ai",
+                relevance: 90
+            },
+            {
+                name: "Quantexa",
+                category: "AML & Compliance",
+                description: "AI-powered platform for fighting money laundering and complex financial crime. Raised $175M to enhance detection capabilities with contextual decision intelligence.",
+                url: "https://www.quantexa.com",
+                relevance: 90
+            },
+            {
+                name: "Hawk AI",
+                category: "AML & Compliance",
+                description: "Machine learning-based anti-money laundering and fraud prevention. Raised $56M to combat sophisticated financial crime with adaptive AI technology.",
+                url: "https://www.hawk.ai",
+                relevance: 88
+            },
+            {
+                name: "Casap",
+                category: "Fraud Detection",
+                description: "First-party fraud scoring and AI decisioning across the payments lifecycle. Secured $25M funding to enhance capabilities and prevent payment fraud.",
+                url: "https://casap.io",
+                relevance: 85
+            },
+            {
+                name: "Eastnets",
+                category: "Fraud Detection",
+                description: "AI-powered fraud prevention with real-time monitoring across SWIFT, cross-border transfers, digital banking. Protects 750+ financial institutions including 11 of top 50 banks.",
+                url: "https://www.eastnets.com",
+                relevance: 88
+            },
+            {
+                name: "Bill.com",
+                category: "Invoice Processing",
+                description: "AI and ML-driven accounts payable and receivable automation. Streamlines invoice approvals, vendor payments, reconciliation with fraud detection. Reduces processing time by 75%.",
+                url: "https://www.bill.com",
+                relevance: 85
+            },
+            {
+                name: "Ramp Bill Pay",
+                category: "Invoice Processing",
+                description: "Modern AI-driven AP solution automating invoice collection, data extraction, payment approvals, and reconciliation. Rated 4.8/5 stars by 2,000+ users for ease of use.",
+                url: "https://ramp.com",
+                relevance: 87
+            },
+            {
+                name: "Sage Intacct",
+                category: "Invoice Processing",
+                description: "Cloud-based AI invoice processing with real-time analytics, compliance management, and intelligent automation. Multi-currency support with advanced AI insights.",
+                url: "https://www.sage.com/en-us/products/sage-intacct",
+                relevance: 82
+            },
+            {
+                name: "Xero",
+                category: "Invoice Processing",
+                description: "AI-powered automation for invoice processing, expense tracking, and financial reporting. Cloud-based accounting ideal for small businesses.",
+                url: "https://www.xero.com",
+                relevance: 80
+            },
+            {
+                name: "Stampli",
+                category: "Invoice Processing",
+                description: "AI-driven automation with collaborative interface for real-time invoice interaction. Billy AI assistant validates invoices, detects anomalies, ensures compliance.",
+                url: "https://www.stampli.com",
+                relevance: 83
+            },
+            {
+                name: "Ledge",
+                category: "Reconciliation",
+                description: "LLM-powered reconciliation platform interpreting complex financial data. Continuously reconciles payments, tracks cash position in real-time, resolves context gaps automatically.",
+                url: "https://www.ledge.co",
+                relevance: 90
+            },
+            {
+                name: "Billtrust",
+                category: "Accounts Receivable",
+                description: "AI-powered AR platform with predictive analytics, automated collections, smart cash application. Increases match rates from 45% to 90%+ while reducing DSO.",
+                url: "https://www.billtrust.com",
+                relevance: 86
+            },
+            {
+                name: "Routable",
+                category: "Payment Processing",
+                description: "AI invoice processing with real-time tracking, automated validation, and end-to-end automation from receipt to payment to reconciliation.",
+                url: "https://www.routable.com",
+                relevance: 84
+            },
+            {
+                name: "J.P. Morgan Payments AI",
+                category: "Payment Processing",
+                description: "AI-powered payment validation screening and fraud detection. Reduces false positives, enables better queue management, cuts rejection rates by 15-20%.",
+                url: "https://www.jpmorgan.com/payments",
+                relevance: 92
+            },
+            {
+                name: "Mastercard AI",
+                category: "Fraud Detection",
+                description: "Generative AI protecting customers with doubled detection rates. Acquired Recorded Future for $2.65B to bolster AI-driven threat intelligence and cybersecurity.",
+                url: "https://www.mastercard.com",
+                relevance: 94
+            },
+            {
+                name: "Visa AI Applications",
+                category: "Fraud Detection",
+                description: "500+ AI applications processing 500M+ transactions daily. Invested $3.3B in AI infrastructure over decade for real-time fraud detection and prevention.",
+                url: "https://www.visa.com",
+                relevance: 94
+            },
+            {
+                name: "Adyen",
+                category: "Payment Processing",
+                description: "AI-powered payment platform analyzing transaction history to create instant risk profiles. Enables alternative payment methods like BNPL with real-time decisioning.",
+                url: "https://www.adyen.com",
+                relevance: 89
+            },
+            {
+                name: "Posh AI",
+                category: "Customer Service",
+                description: "AI built for banking with 24/7 self-service across phone, website, and app. Solves up to 94% of customer requests without live agents using REALM AI engine.",
+                url: "https://www.posh.ai",
+                relevance: 85
+            },
+            {
+                name: "Kasisto",
+                category: "Customer Service",
+                description: "Agentic AI platform for financial services with KAI conversational AI. Combines prescriptive and generative AI for personalized banking experiences at scale.",
+                url: "https://kasisto.com",
+                relevance: 87
+            },
+            {
+                name: "Forethought",
+                category: "Customer Service",
+                description: "Multi-agentic system for fintech support handling KYC, payment inquiries, account issues. SOC 2 Type II compliant with launch under 30 days.",
+                url: "https://forethought.ai",
+                relevance: 84
+            },
+            {
+                name: "Emitrr",
+                category: "Customer Service",
+                description: "AI chatbot streamlining customer interactions for banks, insurance, wealth management. Automated transaction assistance, fraud detection alerts, NLP-powered support.",
+                url: "https://emitrr.com",
+                relevance: 82
+            },
+            {
+                name: "Devexa",
+                category: "Customer Service",
+                description: "Specialized financial AI chatbot for industry-specific inquiries with trade execution. Voice recognition, video, co-browsing features for comprehensive support.",
+                url: "https://www.devexa.com",
+                relevance: 83
+            },
+            {
+                name: "Upstart",
+                category: "Credit & Underwriting",
+                description: "AI-powered lending platform using ML for credit decisioning. Analyzes alternative data for more accurate risk assessment and faster loan approvals.",
+                url: "https://www.upstart.com",
+                relevance: 88
+            },
+            {
+                name: "Zest AI",
+                category: "Credit & Underwriting",
+                description: "Machine learning software for credit underwriting and risk assessment. Helps lenders make more accurate, fair, and profitable lending decisions.",
+                url: "https://www.zest.ai",
+                relevance: 87
+            },
+            {
+                name: "Liberis",
+                category: "Credit & Underwriting",
+                description: "Generative AI for sales optimization and underwriting. Uses LLMs to analyze bank statements, enhance risk assessment, and assist human underwriters with AI agents.",
+                url: "https://liberis.com",
+                relevance: 85
+            },
+            {
+                name: "Allica Bank AI",
+                category: "Fraud Detection",
+                description: "AI fraud detection tool identifying £1M+ per week in fraudulent loan applications. Document manipulation detection for altered PDFs and fake documents.",
+                url: "https://www.allica.bank",
+                relevance: 86
+            },
+            {
+                name: "Snowflake Financial",
+                category: "Data & Analytics",
+                description: "AI Data Cloud for fintech with fraud detection, risk modeling, predictive analytics. Enables 25x faster reporting with real-time data processing.",
+                url: "https://www.snowflake.com",
+                relevance: 84
+            },
+            {
+                name: "Plaid",
+                category: "Payment Infrastructure",
+                description: "APIs connecting apps to users' bank accounts with AI-powered data enrichment. Enables secure authentication, transaction categorization, and payment initiation.",
+                url: "https://plaid.com",
+                relevance: 88
+            },
+            {
+                name: "Nubank",
+                category: "Digital Banking",
+                description: "AI-driven digital bank with personalized financial insights, smart budgeting, spending analysis. No-fee credit cards with AI-powered risk management.",
+                url: "https://nubank.com.br",
+                relevance: 82
+            },
+            {
+                name: "Ant Financial",
+                category: "Payment Processing",
+                description: "Blockchain and AI for transparent cross-border payments. Reduces costs and improves transaction speed with AI-powered fraud detection and risk assessment.",
+                url: "https://www.antgroup.com",
+                relevance: 90
+            },
+            {
+                name: "Darktrace",
+                category: "Cybersecurity",
+                description: "AI cybersecurity for financial services detecting and responding to threats in real-time. Self-learning technology adapts to evolving cyber threats.",
+                url: "https://www.darktrace.com",
+                relevance: 85
+            },
+            {
+                name: "Kount",
+                category: "Fraud Detection",
+                description: "Multi-layered AI security approach for fraud detection. Machine learning models enhance customer trust and reduce fraud losses across payment channels.",
+                url: "https://kount.com",
+                relevance: 87
+            },
+            {
+                name: "NICE Actimize",
+                category: "AML & Compliance",
+                description: "AI for financial crime risk management including fraud, AML, and compliance. Detects synthetic identities and complex fraud schemes with generative AI.",
+                url: "https://www.niceactimize.com",
+                relevance: 89
+            },
+            {
+                name: "Collatio",
+                category: "Invoice Processing",
+                description: "Advanced AI for invoice processing, reconciliation, and straight-through processing. Dramatically reduces errors, enables auto-payment below thresholds.",
+                url: "https://scryai.com",
+                relevance: 81
+            },
+            {
+                name: "Rossum",
+                category: "Invoice Processing",
+                description: "Cloud-native AI document processing with self-learning algorithms. Customizable interface for adaptable invoice workflows across formats.",
+                url: "https://rossum.ai",
+                relevance: 83
+            },
+            {
+                name: "Arya.ai APEX",
+                category: "Invoice Processing",
+                description: "100+ AI APIs including invoice processing. Streamlines data capture, validation, approval. Secure and scalable for banks, insurance, enterprises.",
+                url: "https://arya.ai",
+                relevance: 82
+            },
+            {
+                name: "Astera",
+                category: "Invoice Processing",
+                description: "AI-powered data management for invoice processing. Intelligent document processing recognizing various formats with automated extraction.",
+                url: "https://www.astera.com",
+                relevance: 80
+            },
+            {
+                name: "Zoho Invoice",
+                category: "Invoice Processing",
+                description: "Comprehensive invoice management with automated invoicing, payment reminders, expense tracking. AI-driven workflow optimization.",
+                url: "https://www.zoho.com/invoice",
+                relevance: 78
+            },
+            {
+                name: "Wave",
+                category: "Invoice Processing",
+                description: "Cloud-based accounting and invoice management for small businesses. Automated invoice processing, payment tracking, financial reporting.",
+                url: "https://www.waveapps.com",
+                relevance: 77
+            }
+        ];
+
+        function renderTools(filteredTools) {
+            const grid = document.getElementById('toolsGrid');
+            grid.innerHTML = '';
+
+            filteredTools.forEach(tool => {
+                const card = document.createElement('div');
+                card.className = 'tool-card';
+                
+                const impactDots = Array(5).fill(0).map((_, i) => 
+                    `<div class="impact-dot ${i < Math.ceil(tool.relevance/20) ? 'active' : ''}"></div>`
+                ).join('');
+
+                card.innerHTML = `
+                    <div class="tool-header">
+                        <div class="tool-name">${tool.name}</div>
+                        <div class="relevance-badge">${tool.relevance}%</div>
+                    </div>
+                    <div class="category-tag">${tool.category}</div>
+                    <div class="tool-description">${tool.description}</div>
+                    <div class="tool-footer">
+                        <div class="impact-indicator">${impactDots}</div>
+                        <a href="${tool.url}" target="_blank" class="visit-btn">Visit Site</a>
+                    </div>
+                `;
+                
+                grid.appendChild(card);
+            });
+
+            updateStats(filteredTools);
+        }
+
+        function updateStats(filteredTools) {
+            document.getElementById('totalTools').textContent = filteredTools.length;
+            
+            const categories = new Set(filteredTools.map(t => t.category));
+            document.getElementById('categories').textContent = categories.size;
+            
+            const avgRelevance = filteredTools.reduce((sum, t) => sum + t.relevance, 0) / filteredTools.length;
+            document.getElementById('avgRelevance').textContent = Math.round(avgRelevance) + '%';
+        }
+
+        function populateCategories() {
+            const categories = [...new Set(tools.map(t => t.category))].sort();
+            const select = document.getElementById('categoryFilter');
+            
+            categories.forEach(cat => {
+                const option = document.createElement('option');
+                option.value = cat;
+                option.textContent = cat;
+                select.appendChild(option);
+            });
+        }
+
+        function filterTools() {
+            const category = document.getElementById('categoryFilter').value;
+            const search = document.getElementById('searchInput').value.toLowerCase();
+
+            let filtered = tools;
+
+            if (category !== 'all') {
+                filtered = filtered.filter(t => t.category === category);
+            }
+
+            if (search) {
+                filtered = filtered.filter(t => 
+                    t.name.toLowerCase().includes(search) ||
+                    t.description.toLowerCase().includes(search) ||
+                    t.category.toLowerCase().includes(search)
+                );
+            }
+
+            filtered.sort((a, b) => b.relevance - a.relevance);
+            renderTools(filtered);
+        }
+
+        document.getElementById('categoryFilter').addEventListener('change', filterTools);
+        document.getElementById('searchInput').addEventListener('input', filterTools);
+
+        populateCategories();
+        renderTools(tools);
+    </script>
+</body>
+</html>
